@@ -28,9 +28,13 @@ before() {
   echo -e "Run \033[1mchsh -s $(which zsh)\033[0m to set zsh as the default shell"
 }
 
+config() {
+  ln -s $SCRIPT_DIR/.zshrc $HOME/.zshrc
+}
+
 symbolic_install() {
   before
-  ln -s $SCRIPT_DIR/.zshrc $HOME/.zshrc
+  config
   echo -e "\033[1;32mDone.\033[0m"
 }
 
