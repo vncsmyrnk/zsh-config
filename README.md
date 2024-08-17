@@ -9,7 +9,7 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 ### Install zsh, plugins and config
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/vncsmyrnk/zsh-config/main/install-apt.sh)
+bash <(curl -s https://raw.githubusercontent.com/vncsmyrnk/zsh-config/main/install.sh)
 ```
 
 ### Just the config
