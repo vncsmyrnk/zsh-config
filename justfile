@@ -15,7 +15,7 @@ install: install-plugins config
 
 config:
   stow -t {{home_dir()}} .
-  source {{home_dir()}}/.zshrc
+  source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile
 
 delete-config:
   stow -D -t {{home_dir()}} .
