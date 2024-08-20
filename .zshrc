@@ -110,3 +110,9 @@ alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
 # Binds
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+
+# Source extra files
+other_rc_files=(~/.zshrc_other)
+for file in $other_rc_files; do
+  if [ -f $file ]; then . $file; fi
+done
