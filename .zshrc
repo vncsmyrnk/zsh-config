@@ -104,5 +104,9 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
+alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
+
+# Binds
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
