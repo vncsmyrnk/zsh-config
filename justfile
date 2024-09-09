@@ -1,3 +1,4 @@
+# TODO:Use shell considering zsh will be installed further
 set shell := ["zsh", "-cu"]
 
 default:
