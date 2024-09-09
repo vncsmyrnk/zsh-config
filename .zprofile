@@ -11,6 +11,7 @@ export GOPATH=$HOME/go
 [ -d "$HOME/google-cloud-sdk/bin" ] && PATH="$HOME/google-cloud-sdk/bin:$PATH"
 [ -d "/home/linuxbrew/.linuxbrew/bin" ] && PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 [ -d "/home/linuxbrew/.linuxbrew/sbin" ] && PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
+[ -d "$HOME/.config/composer/vendor/bin" ] && PATH="$HOME/.config/composer/vendor/bin:$PATH"
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi # Updates PATH for the Google Cloud SDK.
