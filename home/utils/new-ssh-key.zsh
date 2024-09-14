@@ -6,7 +6,7 @@
 email=$1
 
 if [ -z "$email" ]; then
-  echo "Usage: ./script.sh <email>"
+  echo "Usage: new-ssh-key <email>"
   exit 1
 fi
 

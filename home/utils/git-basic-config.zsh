@@ -7,7 +7,7 @@ name=$1
 email=$2
 
 if [ -z "$name" ] || [ -z "$email" ]; then
-  echo "Usage: git-setup.sh <name> <email>"
+  echo "Usage: git-basic-setup.sh <name> <email>"
   exit 1
 fi
 
