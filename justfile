@@ -23,5 +23,5 @@ config:
   @echo "Run \"source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile\" to apply zsh config"
 
 delete-config:
-  stow -D -t {{home_dir()}} .
-  stow -D -t {{bin_path}}
+  stow -D -t {{home_dir()}} home
+  stow -D -t {{bin_path}} bin
