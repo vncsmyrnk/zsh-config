@@ -6,16 +6,19 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 
 ## Directory linking
 
-- `bin` is mapped to `~/.local/bin`
-- `home` is mapped to `~/` ($HOME)
+- `bin` is mapped to `$HOME/.local/bin`
+- `completion` is mapped to `$ZSH/custom/completions`
+- `home` is mapped to `$HOME`
 
 ## Usage
 
 _zsh scripts_ stored in the `bin` folder must be executable via `util` command. Example:
 
 ```bash
-util file # Will source `home/utils/file.zsh`
+util file # Will source `home/utils/file.zsh` if exists
 ```
+
+The `util` command should have autocomplete features.
 
 `.zprofile` and `.zshrc` are configuration files. To apply, just `source` them.
 
