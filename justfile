@@ -1,6 +1,3 @@
-# TODO:Use shell considering zsh will be installed further
-set shell := ["zsh", "-cu"]
-
 bin_path := "$HOME/.local/bin"
 zsh_completions_path := "$ZSH/custom/completions"
 
