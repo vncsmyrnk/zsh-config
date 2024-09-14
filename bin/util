@@ -2,11 +2,16 @@
 
 #!/bin/zsh
 
-util="$HOME/utils/$1.zsh"
+# TODO: Autocompletion: https://unix.stackexchange.com/questions/239528/dynamic-zsh-autocomplete-for-custom-commands
 
-if [ -d $util ]; then
+utils_dir="$HOME/utils"
+util="$utils_dir/$1.zsh"
+
+if [ -e $util ]; then
+  shift
   . $util "$@"
 else
-  echo "Util not found"
+  echo "Util file not found. Check \033[1m$utils_dir\033[0m for commands available"
+  echo "\033[2mTip: pass file without the .zsh extension\033[0m"
   exit 1
 fi

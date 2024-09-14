@@ -1,6 +1,8 @@
 # TODO:Use shell considering zsh will be installed further
 set shell := ["zsh", "-cu"]
 
+bin_path := "~/.local/bin"
+
 default:
   just --list
 
@@ -15,9 +17,11 @@ install-plugins: install-deps
 install: install-plugins config
 
 config:
+  mkdir -p {{bin_path}}
   stow -t {{home_dir()}} home
-  stow -t /usr/local/bin bin
-  source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile
+  stow -t {{bin_path}} bin
+  @echo "Run \"source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile\" to apply zsh config"
 
 delete-config:
   stow -D -t {{home_dir()}} .
+  stow -D -t {{bin_path}}
