@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
 alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
 alias docker:stop-running="docker stop \$(docker ps -a -q)"
-alias docker:remove-all="docker image ls | awk 'NR!=1 { print $3 }' | xargs -I {} docker image rm -f {}"
+alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print $3 }' | xargs -I {} docker image rm -f {}"
 alias docker:prune="docker system prune"
 
 # Binds
