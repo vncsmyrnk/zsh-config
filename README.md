@@ -4,10 +4,10 @@ This is my local config for using the [zsh](https://www.zsh.org/) shell.
 
 For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 
-## Directiory linking
+## Directory linking
 
 - `bin` is mapped to `~/.local/bin`
-- `home` is mapped to `~/`
+- `home` is mapped to `~/` ($HOME)
 
 ## Install
 
@@ -25,4 +25,4 @@ just config
 
 ## Updating
 
-Make sure to run `just config-delete` before updating. On the new config, then run `just config`
+Make sure to run `just config-delete` before updating. Then, run `just config` on the new config.
