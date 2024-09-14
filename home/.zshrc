@@ -109,6 +109,7 @@ alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
 alias docker:stop-running="docker stop \$(docker ps -a -q)"
 alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print $3 }' | xargs -I {} docker image rm -f {}"
 alias docker:prune="docker system prune"
+alias git:undo-local-commit="git reset HEAD~"
 
 # Binds
 bindkey '^[[1;5D' backward-word
