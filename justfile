@@ -15,7 +15,8 @@ install-plugins: install-deps
 install: install-plugins config
 
 config:
-  stow -t {{home_dir()}} .
+  stow -t {{home_dir()}} home
+  stow -t /usr/local/bin bin
   source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile
 
 delete-config:

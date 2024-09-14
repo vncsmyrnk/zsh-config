@@ -1,0 +1,12 @@
+# vim: set ft=zsh:
+
+#!/bin/zsh
+
+util="$HOME/utils/$1.zsh"
+
+if [ -d $util ]; then
+  . $util "$@"
+else
+  echo "Util not found"
+  exit 1
+fi
