@@ -14,7 +14,7 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 _zsh scripts_ stored in the `bin` folder must be executable via `util` command. Example:
 
 ```bash
-util file # Will source the `home/utils/file.zsh`
+util file # Will source `home/utils/file.zsh`
 ```
 
 `.zprofile` and `.zshrc` are configuration files. To apply, just `source` them.
