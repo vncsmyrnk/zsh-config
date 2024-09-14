@@ -2,8 +2,6 @@
 
 #!/bin/zsh
 
-# TODO: Autocompletion: https://unix.stackexchange.com/questions/239528/dynamic-zsh-autocomplete-for-custom-commands
-
 utils_dir="$HOME/utils"
 util="$utils_dir/$1.zsh"
 

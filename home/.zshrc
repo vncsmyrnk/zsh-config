@@ -114,6 +114,9 @@ alias docker:prune="docker system prune"
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
+# Completions
+autoload -U _util && _util
+
 # Source extra files
 other_rc_files=(~/.zshrc_other)
 for file in $other_rc_files; do

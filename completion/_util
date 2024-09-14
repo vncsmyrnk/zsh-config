@@ -1,0 +1,14 @@
+# vim: set ft=zsh:
+
+#!/bin/zsh
+
+compdef _util util
+
+_util() {
+  if [ ! -d $HOME/utils ]; then
+    return
+  fi
+
+  local files=($(ls $HOME/utils | cut -f1 -d "."))
+  for f in $files; do compadd $f; done
+}

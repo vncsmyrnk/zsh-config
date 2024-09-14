@@ -1,7 +1,8 @@
 # TODO:Use shell considering zsh will be installed further
 set shell := ["zsh", "-cu"]
 
-bin_path := "~/.local/bin"
+bin_path := "$HOME/.local/bin"
+zsh_completions_path := "$ZSH/custom/completions"
 
 default:
   just --list
@@ -17,11 +18,13 @@ install-plugins: install-deps
 install: install-plugins config
 
 config:
-  mkdir -p {{bin_path}}
+  mkdir -p {{bin_path}} {{zsh_completions_path}}
   stow -t {{home_dir()}} home
   stow -t {{bin_path}} bin
-  @echo "Run \"source {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile\" to apply zsh config"
+  stow -t {{zsh_completions_path}} completion
+  @echo "Run \033[1msource {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile\033[0m to apply zsh config"
 
 delete-config:
   stow -D -t {{home_dir()}} home
   stow -D -t {{bin_path}} bin
+  stow -D -t {{zsh_completions_path}} completion
