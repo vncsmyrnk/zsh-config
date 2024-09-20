@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Decodes a jwt token to
+# a readable json
+
 jwt_token=$1
 
 if [ -z "$jwt_token" ]; then

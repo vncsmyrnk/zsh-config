@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# Syncs the branch with the upstream repo
+
 default_branch="$1"
 
 if [ -z "$default_branch" ]; then
