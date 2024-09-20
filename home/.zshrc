@@ -115,8 +115,11 @@ alias git:undo-local-commit="git reset HEAD~"
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
-# Completions
-autoload -U _util && _util
+# Custom completions. It must be run just at shell initialization
+if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
+  autoload -U _util && _util
+  AUTOLOADED_COMPLETIONS=1
+fi
 
 # Source extra files
 other_rc_files=(~/.zshrc_other)
