@@ -123,3 +123,8 @@ other_rc_files=(~/.zshrc_other)
 for file in $other_rc_files; do
   if [ -f $file ]; then . $file; fi
 done
+
+# Ensure ~/.zprofile is sourced. Check if it is OK to do this
+# if [ -f ~/.zprofile ]; then
+#   source ~/.zprofile
+# fi
