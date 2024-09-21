@@ -20,7 +20,7 @@ config:
   stow -t {{home_dir()}} home
   stow -t {{bin_path}} bin
   stow -t {{zsh_completions_path}} completion
-  @echo "Run \033[1msource {{home_dir()}}/.zshrc {{home_dir()}}/.zprofile\033[0m to apply zsh config"
+  @echo "Run \033[1msource {{home_dir()}}/.zshrc\033[0m to apply zsh config"
 
 delete-config:
   stow -D -t {{home_dir()}} home
