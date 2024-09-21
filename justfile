@@ -5,7 +5,8 @@ default:
   just --list
 
 install-deps:
-  sudo apt-get install zsh
+  sudo apt-get install zsh stow git
+  chsh -s $(which zsh)
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 install-plugins: install-deps
