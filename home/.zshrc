@@ -121,6 +121,9 @@ if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
   AUTOLOADED_COMPLETIONS=1
 fi
 
+# LANG
+export LANG=en_US.UTF-8
+
 # Source extra files
 other_rc_files=(~/.zshrc_other)
 for file in $other_rc_files; do
