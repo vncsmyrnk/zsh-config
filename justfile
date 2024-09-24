@@ -2,7 +2,6 @@ os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2`
 os_full := if os == "\"Arch Linux\"" { "arch" } else if os == "\"Debian GNU/Linux\"" { "debian" } else { error("Unsuported OS") }
 
 bin_path := "$HOME/.local/bin"
-zsh_completions_path := "$ZSH/custom/completions"
 
 default:
   just --list
@@ -15,7 +14,7 @@ install-deps:
     sudo pacman -S zsh stow git
   fi
   chsh -s $(which zsh)
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
   rm ~/.zshrc
 
 install-plugins: install-deps
@@ -25,13 +24,13 @@ install-plugins: install-deps
 install: install-plugins config
 
 config:
-  mkdir -p {{bin_path}} {{zsh_completions_path}}
+  mkdir -p {{bin_path}} $ZSH/custom/completions
   stow -t {{home_dir()}} home
   stow -t {{bin_path}} bin
-  stow -t {{zsh_completions_path}} completion
-  @echo "Run \033[1msource {{home_dir()}}/.zshrc\033[0m to apply zsh config"
+  stow -t $ZSH/custom/completions completion
+  @echo -e "Run \033[1msource {{home_dir()}}/.zshrc\033[0m to apply zsh config"
 
 delete-config:
   stow -D -t {{home_dir()}} home
   stow -D -t {{bin_path}} bin
-  stow -D -t {{zsh_completions_path}} completion
+  stow -D -t $ZSH/custom/completions completion
