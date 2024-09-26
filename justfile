@@ -1,5 +1,4 @@
-os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2`
-os_full := if os == "\"Arch Linux\"" { "arch" } else if os == "\"Debian GNU/Linux\"" { "debian" } else { error("Unsuported OS") }
+os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
 bin_path := "$HOME/.local/bin"
 
@@ -8,9 +7,9 @@ default:
 
 install-deps:
   #!/bin/bash
-  if [ "{{os_full}}" = "debian" ]; then
+  if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
     sudo apt-get install zsh stow git
-  elif [ "{{os_full}}" = "arch" ]; then
+  elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S zsh stow git
   fi
   chsh -s $(which zsh)
