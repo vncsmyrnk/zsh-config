@@ -12,15 +12,25 @@ install-deps:
   elif [ "{{os}}" = "Arch Linux" ]; then
     sudo pacman -S zsh stow git
   fi
-  chsh -s $(which zsh)
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
-  rm ~/.zshrc
+  [ ! $SHELL = "/usr/bin/zsh" ] && chsh -s $(which zsh)
 
-install-plugins: install-deps
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+install-omz:
+  #!/bin/bash
+  if [ -z "$ZSH" ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" --unattended
+    rm ~/.zshrc
+  fi
 
-install: install-plugins config
+install-omz-plugins:
+  #!/bin/bash
+  PLUGINS_FOLDER=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
+  PLUGINS=(zsh-syntax-highlighting zsh-autosuggestions)
+  for plugin in "${PLUGINS[@]}"; do
+    [ ! -d $PLUGINS_FOLDER/$plugin ] && \
+      echo "git clone https://github.com/zsh-users/$plugin.git $PLUGINS_FOLDER/$plugin"
+  done
+
+install: install-deps install-omz install-omz-plugins config
 
 config:
   mkdir -p {{bin_path}} $ZSH/custom/completions
