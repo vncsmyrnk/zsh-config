@@ -11,4 +11,8 @@ if [ -z "$filter" ]; then
   exit 1
 fi
 
-ps aux | grep -e $filter | awk '{ print $2 }' | xargs kill -9
+ps aux
+  | grep -e $filter
+  | grep -v grep
+  | awk '{ print $2 }'
+  | xargs kill -9
