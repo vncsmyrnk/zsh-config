@@ -107,6 +107,8 @@ export EDITOR='vim'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
+alias brew:upgrade="brew update && brew upgrade"
+alias lazy:upgrade="nvim --headless \"+Lazy! sync\" +qa"
 alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
 alias docker:stop-running="docker stop \$(docker ps -a -q)"
 alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print $3 }' | xargs -I {} docker image rm -f {}"
