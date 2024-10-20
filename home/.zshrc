@@ -114,6 +114,7 @@ alias docker:stop-running="docker stop \$(docker ps -a -q)"
 alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print \$3 }' | xargs -I {} docker image rm -f {}"
 alias docker:prune="docker system prune"
 alias git:undo-local-commit="git reset HEAD~"
+alias git:submod-update="git submodule update --recursive --remote"
 
 # Binds
 bindkey '^[[1;5D' backward-word
