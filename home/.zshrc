@@ -115,6 +115,7 @@ alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print \$3 }' | xar
 alias docker:prune="docker system prune"
 alias git:undo-local-commit="git reset HEAD~"
 alias git:submod-update="git submodule update --recursive --remote"
+alias copilot:explain="gh copilot explain"
 
 # Binds
 bindkey '^[[1;5D' backward-word
