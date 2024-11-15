@@ -23,9 +23,10 @@ add_dir_to_path "/home/linuxbrew/.linuxbrew/bin"
 add_dir_to_path "/home/linuxbrew/.linuxbrew/sbin"
 add_dir_to_path "$HOME/.config/composer/vendor/bin"
 
-add_file_to_path "$HOME/.nvm/nvm.sh"        # This loads nvm
-add_file_to_path "$NVM_DIR/bash_completion" # This loads nvm bash_completion
 add_file_to_path "$HOME/.gvm/scripts/gvm"
 
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+[ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"                                                          # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"                                            # This loads nvm bash_completion
 if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi             # Updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi # Enables shell command completion for gcloud.
