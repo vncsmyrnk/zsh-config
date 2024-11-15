@@ -10,7 +10,6 @@ add_to_path() {
 add_to_path "/usr/local/go/bin"
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/go/bin"
-add_to_path "$HOME/.nvm/versions/node/v18.18.2/bin"
 add_to_path "$HOME/.local/share/nvim/mason/bin" # Makes mason installed plugins available
 add_to_path "$HOME/google-cloud-sdk/bin"
 add_to_path "$HOME/.config/composer/vendor/bin"
