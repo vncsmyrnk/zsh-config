@@ -51,12 +51,6 @@ if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
 fi
 
 # Source extra files
-other_rc_files=(~/.zshrc_other)
-for file in $other_rc_files; do
-  if [ -f $file ]; then . $file; fi
-done
-
-# Ensure ~/.zprofile is sourced
-if [ -f ~/.zprofile ]; then
-  . ~/.zprofile
-fi
+[ -f ~/.zshrc_other ] && \. ~/.zshrc_other
+[ -f ~/.zprofile ] && \. ~/.zprofile
+[ -f ~/.env ] && \. ~/.env
