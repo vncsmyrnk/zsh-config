@@ -16,6 +16,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 export EDITOR='vim'
+export LANG=en_US.UTF-8
+export NVM_DIR="$HOME/.nvm"
+export GOPATH=$HOME/go
 
 # Aliases
 alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
@@ -39,9 +42,6 @@ if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
   autoload -U _util && _util
   AUTOLOADED_COMPLETIONS=1
 fi
-
-# LANG
-export LANG=en_US.UTF-8
 
 # Source extra files
 other_rc_files=(~/.zshrc_other)

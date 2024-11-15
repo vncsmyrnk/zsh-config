@@ -1,6 +1,3 @@
-export NVM_DIR="$HOME/.nvm"
-export GOPATH=$HOME/go
-
 add_to_path() {
   if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
     PATH="$PATH:$1"
