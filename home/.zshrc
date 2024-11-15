@@ -33,6 +33,13 @@ alias git:submod-update="git submodule update --recursive --remote"
 alias cop:explain="gh copilot explain"
 alias cop:suggest="gh copilot suggest"
 
+# Apps specs
+[ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
+[ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"                                                 # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"                                   # This loads nvm bash_completion
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"             # Updates PATH for the Google Cloud SDK.
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc" # Enables shell command completion for gcloud.
+
 # Binds
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
