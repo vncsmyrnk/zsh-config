@@ -18,7 +18,6 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
-export GOPATH=$HOME/go
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
