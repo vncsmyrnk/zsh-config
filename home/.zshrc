@@ -26,6 +26,7 @@ export GOPATH=$HOME/go
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"                                   # This loads nvm bash_completion
 [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"             # Updates PATH for the Google Cloud SDK.
 [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc" # Enables shell command completion for gcloud.
+[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Aliases
 alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
