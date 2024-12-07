@@ -39,7 +39,7 @@ config:
   stow -t $ZSH/custom/completions completion
   @echo -e "Run \033[1msource {{home_dir()}}/.zshrc\033[0m to apply zsh config"
 
-delete-config:
+unset-config:
   stow -D -t {{home_dir()}} home
   stow -D -t {{bin_path}} bin
   stow -D -t $ZSH/custom/completions completion
