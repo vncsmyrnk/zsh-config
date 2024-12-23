@@ -26,6 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"               # Updates PATH for the Google Cloud SDK.
 [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc"   # Enables shell command completion for gcloud.
 [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # This loads homebrew path and variables
+command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                              # Sets path varibles to lua 5.1
 
 # Aliases
 alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
