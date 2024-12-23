@@ -5,7 +5,7 @@ add_to_path() {
 }
 
 add_to_path "$HOME/.local/bin"
-add_to_path "$HOME/.local/share/nvim/mason/bin" # Makes mason installed plugins available
 add_to_path "$HOME/google-cloud-sdk/bin"
-add_to_path "$HOME/.config/composer/vendor/bin"
-add_to_path "$HOME/.cargo/bin" # Makes cargo installed packages available
+add_to_path "$HOME/.config/composer/vendor/bin" # Makes composer/PHP installed plugins available
+add_to_path "$HOME/.local/share/nvim/mason/bin" # Makes mason installed plugins available
+add_to_path "$HOME/.cargo/bin"                  # Makes cargo installed packages available
