@@ -11,3 +11,5 @@ add_to_path "$HOME/.local/share/nvim/mason/bin" # Makes mason installed plugins 
 add_to_path "$HOME/.cargo/bin"                  # Makes cargo installed packages available
 add_to_path "$HOME/.luarocks/bin"               # Makes lua installed packages available
 add_to_path "/opt/openresty/bin"
+
+command -v go >/dev/null && add_to_path "$(go env GOPATH)/bin"
