@@ -5,8 +5,8 @@
 
 BACKUP_ZIP_FILE_PATH=${BACKUP_ZIP_FILE_PATH:-/tmp/backup.zip}
 
-if [ -z "$UTILS_BKP_DIR" ]; then
-  echo "Please define the backup dirs list in the \$UTILS_BKP_DIR environment variable"
+if [ -z "$UTILS_BKP_DIRS" ]; then
+  echo "Please define the backup dirs list in the \$UTILS_BKP_DIRS environment variable"
   exit 1
 fi
 
@@ -20,12 +20,12 @@ function main() {
 }
 
 function compress_dirs() {
-  if [ -z "$UTILS_BKP_DIR" ]; then
-    echo "\$UTILS_BKP_DIR unset"
+  if [ -z "$UTILS_BKP_DIRS" ]; then
+    echo "\$UTILS_BKP_DIRS unset"
     return
   fi
 
-  dirs=(${=UTILS_BKP_DIR})
+  dirs=(${=UTILS_BKP_DIRS})
   for dir in "${dirs[@]}"; do
     if [ ! -d "$dir" ]; then
       echo "$dir does not exist"
