@@ -15,7 +15,8 @@ function main() {
   compress_files
 
   if [ ! -z $BACKUP_ZIP_FILE_PATH ]; then
-    echo "Backup file generated at $BACKUP_ZIP_FILE_PATH."
+    backup_size=$(ls -lh $BACKUP_ZIP_FILE_PATH | awk '{ print $5 }')
+    echo "Backup file generated at $BACKUP_ZIP_FILE_PATH [$backup_size]"
   fi
 }
 
