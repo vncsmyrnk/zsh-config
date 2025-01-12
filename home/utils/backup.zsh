@@ -33,7 +33,7 @@ function compress_dirs() {
       continue
     fi
 
-    dir_size=$(du -sh ~/dotfiles | awk '{ print $1 }')
+    dir_size=$(du -sh $dir | awk '{ print $1 }')
     echo "Adding $dir to be compressed [$dir_size]"
     zip -rq "$BACKUP_ZIP_FILE_PATH" "$dir"
   done
