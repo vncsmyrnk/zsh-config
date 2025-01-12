@@ -7,7 +7,7 @@ util="$utils_dir/$1.zsh"
 
 if [ -e $util ]; then
   shift
-  . $util "$@"
+  zsh $util "$@"
 else
   echo "Util file not found. Check \033[1m$utils_dir\033[0m for commands available"
   echo "\033[2mTip: pass file without the .zsh extension\033[0m"
