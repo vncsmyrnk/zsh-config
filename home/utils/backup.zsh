@@ -5,12 +5,14 @@
 
 BACKUP_ZIP_FILE_PATH=${BACKUP_ZIP_FILE_PATH:-/tmp/backup.zip}
 
-if [ -z "$UTILS_BKP_DIRS" ]; then
-  echo "Please define the backup dirs list in the \$UTILS_BKP_DIRS environment variable"
-  exit 1
-fi
-
 function main() {
+  if [ -z "$UTILS_BKP_DIRS" ] || [ -z "$UTILS_BKP_FILES" ]; then
+    echo "Please define at least one of the backup variables: \$UTILS_BKP_DIRS \$UTILS_BKP_FILES"
+    exit 1
+  fi
+
+  rm -f $BACKUP_ZIP_FILE_PATH
+
   compress_dirs
   compress_files
 
