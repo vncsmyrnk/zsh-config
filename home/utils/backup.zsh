@@ -6,7 +6,7 @@
 BACKUP_ZIP_FILE_PATH=${BACKUP_ZIP_FILE_PATH:-/tmp/backup.zip}
 
 function main() {
-  if [ -z "$UTILS_BKP_DIRS" ] || [ -z "$UTILS_BKP_FILES" ]; then
+  if [ -z "$UTILS_BKP_DIRS" ] && [ -z "$UTILS_BKP_FILES" ]; then
     echo "Please define at least one of the backup variables: \$UTILS_BKP_DIRS \$UTILS_BKP_FILES"
     exit 1
   fi
@@ -50,12 +50,12 @@ function compress_files() {
 
   files=(${=UTILS_BKP_FILES})
   for file in "${files[@]}"; do
-    if [ ! -f "$file" ]; then
+    if [ ! -e "$file" ]; then
       echo "$file does not exist"
       continue
     fi
 
-    file_size=$(ls -lh ~/.zshrc_other | awk '{ print $5 }')
+    file_size=$(ls -lh "$file" | awk '{ print $5 }')
     echo "Adding $file to be compressed [$file_size]"
     zip -q "$BACKUP_ZIP_FILE_PATH" "$file"
   done
