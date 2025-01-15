@@ -41,6 +41,8 @@ alias git:undo-local-commit="git reset HEAD~"
 alias git:submod-update="git submodule update --recursive --remote"
 alias cop:explain="gh copilot explain"
 alias cop:suggest="gh copilot suggest"
+alias k="kubernetes"
+alias lg="lazygit"
 
 # Binds
 bindkey '^[[1;5D' backward-word
