@@ -21,7 +21,7 @@ function main() {
 }
 
 function compress_files() {
-  paths=(${=UTILS_BKP_PATHS})
+  IFS=' ' read -r -A paths <<<"$UTILS_BKP_PATHS"
   for file_path in "${paths[@]}"; do
     if [ -d "$file_path" ]; then
       dir_size=$(du -sh $file_path | awk '{ print $1 }')
