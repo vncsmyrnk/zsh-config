@@ -6,7 +6,7 @@ MANUALLY_INSTALLED_LOCATION=~/.local/stow
 UPDATE_SCRIPT_BASE_LOCATION=~/dotfiles
 UPDATE_GLOBAL_SCRIPT=~/update.sh
 
-main() {
+function main() {
   # Updates package managers
   if exists apt; then sudo apt-get update && sudo apt-get upgrade -y; fi
   if exists brew; then brew update && brew upgrade; fi
@@ -34,9 +34,8 @@ main() {
   }
 }
 
-exists() {
+function exists() {
   command -v "$1" >/dev/null
 }
 
 main "$@"
-exit 0
