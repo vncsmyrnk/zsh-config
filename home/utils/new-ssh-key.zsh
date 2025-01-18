@@ -10,5 +10,6 @@ if [ -z "$email" ]; then
   exit 1
 fi
 
-ssh-keygen -t rsa -b 4096 -C $email
-cat ~/.ssh/id_rsa.pub
+ssh-keygen -t ed25519 -C "$email"
+xclip -selection clipboard <~/.ssh/id_ed25519.pub
+echo "key copied to clipboard"
