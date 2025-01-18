@@ -6,14 +6,12 @@
 BACKUP_ZIP_FILE_PATH=${BACKUP_ZIP_FILE_PATH:-/tmp/backup.zip}
 
 function main() {
-  if [ -z "$UTILS_BKP_DIRS" ] && [ -z "$UTILS_BKP_FILES" ]; then
-    echo "Please define at least one of the backup variables: \$UTILS_BKP_DIRS \$UTILS_BKP_FILES"
+  if [ -z "$UTILS_BKP_PATHS" ]; then
+    echo "Please define the environment variable \$UTILS_BKP_PATHS for properly creating the backup zip"
     exit 1
   fi
 
   rm -f $BACKUP_ZIP_FILE_PATH
-
-  compress_dirs
   compress_files
 
   if [ ! -z $BACKUP_ZIP_FILE_PATH ]; then
@@ -22,42 +20,20 @@ function main() {
   fi
 }
 
-function compress_dirs() {
-  if [ -z "$UTILS_BKP_DIRS" ]; then
-    echo "\$UTILS_BKP_DIRS unset"
-    return
-  fi
-
-  dirs=(${=UTILS_BKP_DIRS})
-  for dir in "${dirs[@]}"; do
-    if [ ! -d "$dir" ]; then
-      echo "$dir does not exist"
-      continue
-    fi
-
-    dir_size=$(du -sh $dir | awk '{ print $1 }')
-    echo "Adding $dir to be compressed [$dir_size]"
-    zip -rq "$BACKUP_ZIP_FILE_PATH" "$dir"
-  done
-}
-
-
 function compress_files() {
-  if [ -z "$UTILS_BKP_FILES" ]; then
-    echo "\$UTILS_BKP_FILES unset"
-    return
-  fi
-
-  files=(${=UTILS_BKP_FILES})
-  for file in "${files[@]}"; do
-    if [ ! -e "$file" ]; then
-      echo "$file does not exist"
-      continue
+  paths=(${=UTILS_BKP_PATHS})
+  for file_path in "${paths[@]}"; do
+    if [ -d "$file_path" ]; then
+      dir_size=$(du -sh $file_path | awk '{ print $1 }')
+      echo "Adding $file_path to be compressed [$dir_size]"
+      zip -rq "$BACKUP_ZIP_FILE_PATH" "$file_path"
+    elif [ -f "$file_path" ]; then
+      file_size=$(ls -lh "$file_path" | awk '{ print $5 }')
+      echo "Adding $file_path to be compressed [$file_size]"
+      zip -q "$BACKUP_ZIP_FILE_PATH" "$file_path"
+    else
+      echo "$file_path does not exist"
     fi
-
-    file_size=$(ls -lh "$file" | awk '{ print $5 }')
-    echo "Adding $file to be compressed [$file_size]"
-    zip -q "$BACKUP_ZIP_FILE_PATH" "$file"
   done
 }
 
