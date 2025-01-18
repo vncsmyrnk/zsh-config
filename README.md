@@ -12,7 +12,7 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 
 ## Usage
 
-_zsh scripts_ stored in the `bin` folder must be executable via `util` command. Example:
+_zsh scripts_ stored in the `home` folder must be executable via `util` command. Example:
 
 ```bash
 util file # Will source `home/utils/file.zsh` if exists
