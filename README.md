@@ -10,6 +10,8 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 - `completion` is mapped to `$ZSH/custom/completions`
 - `home` is mapped to `$HOME`
 
+[stow](https://www.gnu.org/software/stow/) is used for creating the symbolic links.
+
 ## Usage
 
 _zsh scripts_ stored in the `home` folder must be executable via `util` command. Example:
