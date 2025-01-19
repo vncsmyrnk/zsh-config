@@ -8,9 +8,9 @@ default:
 install-deps:
   #!/bin/bash
   if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
-    sudo apt-get install zsh stow git fzf fd-find
+    sudo apt-get install zsh stow git fzf fd-find tree
   elif [ "{{os}}" = "Arch Linux" ]; then
-    sudo pacman -S zsh stow git fzf fd
+    sudo pacman -S zsh stow git fzf fd tree
   fi
   [ ! $SHELL = "/usr/bin/zsh" ] && chsh -s $(which zsh)
 
