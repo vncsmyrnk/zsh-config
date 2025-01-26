@@ -20,7 +20,7 @@ export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
 export UTILS_BKP_PATHS="$HOME/.zshrc_other $HOME/.env"
 export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues"
-export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/Projects"
+export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/Projects $HOME/dotfiles"
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
