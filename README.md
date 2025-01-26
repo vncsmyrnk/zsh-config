@@ -1,4 +1,4 @@
-# zsh Config
+# My zsh config
 
 This is my local config for using the [zsh](https://www.zsh.org/) shell.
 
