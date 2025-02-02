@@ -18,7 +18,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
-export UTILS_BKP_PATHS="$HOME/.zshrc_other $HOME/.env"
+export UTILS_BKP_PATHS="$HOME/.zshrc.private $HOME/.env"
 export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues"
 export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
 
@@ -57,6 +57,6 @@ if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
 fi
 
 # Source extra files
-[ -f ~/.zshrc_other ] && \. ~/.zshrc_other
+[ -f ~/.zshrc.private ] && \. ~/.zshrc.private
 [ -f ~/.zprofile ] && \. ~/.zprofile
 [ -f ~/.env ] && \. ~/.env

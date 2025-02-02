@@ -38,6 +38,6 @@ Considering `zsh` is already installed, you can just run:
 just config
 ```
 
-## Updating
-
-Make sure to run `just config-delete` before updating. Then, run `just config` on the new config.
+> [!IMPORTANT]
+> Make sure to run `just config-delete` before updating. Then, run `just config` on the new config.
+> Extra zsh config will be sourced from `~/.zshrc.private`. Use it as a sensitive form of `.zshrc`.
