@@ -39,5 +39,5 @@ just config
 ```
 
 > [!IMPORTANT]
-> Make sure to run `just config-delete` before updating. Then, run `just config` on the new config.
-> Extra zsh config will be sourced from `~/.zshrc.private`. Use it as a sensitive form of `.zshrc`.
+> - Make sure to run `just config-delete` before updating. Then, run `just config` on the new config.
+> - Extra zsh config will be sourced from `~/.zshrc.private`. Use it as a sensitive form of `.zshrc`.
