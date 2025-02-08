@@ -34,6 +34,9 @@ export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and alia
 [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && zsh-defer eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # This loads homebrew path and variables
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                                        # Sets path varibles to lua 5.1
 
+#  INFO: https://github.com/moovweb/gvm/issues/479
+zsh-defer unset -f cd
+
 # Aliases
 alias lazy:upgrade="nvim --headless \"+Lazy! sync\" +qa"
 alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
