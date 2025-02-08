@@ -32,13 +32,15 @@ export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
 export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and aliases stored in another projects
 
 # Apps specs
-[ -s "$HOME/.gvm/scripts/gvm" ] && zsh-defer \. "$HOME/.gvm/scripts/gvm"                                         # Loads gvm config: https://github.com/moovweb/gvm
-[ -s "$HOME/.nvm/nvm.sh" ] && zsh-defer \. "$HOME/.nvm/nvm.sh"                                                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && zsh-defer \. "$NVM_DIR/bash_completion"                                     # This loads nvm bash_completion
-[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"                         # Updates PATH for the Google Cloud SDK.
-[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && zsh-defer \. "$HOME/google-cloud-sdk/completion.zsh.inc"   # Enables shell command completion for gcloud.
-[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && zsh-defer eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # This loads homebrew path and variables
-command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                                        # Sets path varibles to lua 5.1
+[ -s "$HOME/.gvm/scripts/gvm" ] && zsh-defer \. "$HOME/.gvm/scripts/gvm"
+[ -s "$HOME/.nvm/nvm.sh" ] && zsh-defer \. "$HOME/.nvm/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && zsh-defer \. "$NVM_DIR/bash_completion"
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && zsh-defer \. "$HOME/google-cloud-sdk/path.zsh.inc"
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] &&
+  zsh-defer \. "$HOME/google-cloud-sdk/completion.zsh.inc"
+[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] &&
+  zsh-defer eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 #  INFO: https://github.com/moovweb/gvm/issues/479
 zsh-defer unset -f cd
