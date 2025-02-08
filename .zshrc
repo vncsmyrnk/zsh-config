@@ -1,4 +1,5 @@
 # INFO: https://github.com/ohmyzsh/ohmyzsh/wiki
+# zmodload zsh/zprof # uncomment for profiling debug
 
 # Path to Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -12,7 +13,8 @@ ZSH_THEME="bira"
 # Too many plugins slow down shell startup.
 plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
-source $ZSH/oh-my-zsh.sh
+\. $ZSH/oh-my-zsh.sh
+\. $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
 
 # User configuration
 export EDITOR='nvim'
@@ -24,13 +26,13 @@ export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
 export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and aliases stored in another projects
 
 # Apps specs
-[ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
-[ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"                                                   # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"                                     # This loads nvm bash_completion
-[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"               # Updates PATH for the Google Cloud SDK.
-[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc"   # Enables shell command completion for gcloud.
-[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # This loads homebrew path and variables
-command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                              # Sets path varibles to lua 5.1
+[ -s "$HOME/.gvm/scripts/gvm" ] && zsh-defer \. "$HOME/.gvm/scripts/gvm"                                         # Loads gvm config: https://github.com/moovweb/gvm
+[ -s "$HOME/.nvm/nvm.sh" ] && zsh-defer \. "$HOME/.nvm/nvm.sh"                                                   # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && zsh-defer \. "$NVM_DIR/bash_completion"                                     # This loads nvm bash_completion
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"                         # Updates PATH for the Google Cloud SDK.
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && zsh-defer \. "$HOME/google-cloud-sdk/completion.zsh.inc"   # Enables shell command completion for gcloud.
+[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && zsh-defer eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)" # This loads homebrew path and variables
+command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                                        # Sets path varibles to lua 5.1
 
 # Aliases
 alias lazy:upgrade="nvim --headless \"+Lazy! sync\" +qa"
@@ -63,3 +65,4 @@ fi
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
 [ -f ~/.zprofile ] && \. ~/.zprofile
 [ -f ~/.env ] && \. ~/.env
+# zprof # uncomment for profiling debug

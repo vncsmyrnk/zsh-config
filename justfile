@@ -25,7 +25,7 @@ install-omz:
 install-omz-plugins:
   #!/bin/bash
   PLUGINS_FOLDER=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
-  PLUGINS=(zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions)
+  PLUGINS=(zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions romkatv/zsh-defer)
   for plugin in "${PLUGINS[@]}"; do
     plugin_name=$(echo $plugin | cut -d "/" -f2)
     [ -d $PLUGINS_FOLDER/$plugin_name ] && {
