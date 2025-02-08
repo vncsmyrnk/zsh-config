@@ -1,6 +1,7 @@
 os := `cat /etc/os-release | grep "^NAME=" | cut -d "=" -f2 | tr -d '"'`
 
 bin_path := "$HOME/.local/bin"
+utils_path := "$HOME/utils"
 
 default:
   just --list
@@ -33,13 +34,15 @@ install-omz-plugins:
 install: install-deps install-omz install-omz-plugins config
 
 config:
-  mkdir -p {{bin_path}} $ZSH/custom/completions
-  stow -t {{home_dir()}} home
+  @mkdir -p {{bin_path}} {{utils_path}} $ZSH/custom/completions
+  stow -t {{home_dir()}} . --ignore=utils --ignore=completion --ignore=bin
+  stow -t {{utils_path}} utils
   stow -t {{bin_path}} bin
   stow -t $ZSH/custom/completions completion
   @echo -e "Run \033[1msource {{home_dir()}}/.zshrc\033[0m to apply zsh config"
 
 unset-config:
-  stow -D -t {{home_dir()}} home
+  stow -D -t {{home_dir()}} . --ignore=utils --ignore=completion --ignore=bin
+  stow -D -t {{utils_path}} utils
   stow -D -t {{bin_path}} bin
   stow -D -t $ZSH/custom/completions completion

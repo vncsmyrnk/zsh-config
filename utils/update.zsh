@@ -3,7 +3,7 @@
 # Updates installed apps
 
 MANUALLY_INSTALLED_LOCATION=~/.local/stow
-UPDATE_SCRIPT_BASE_LOCATION=~/dotfiles
+UPDATE_SCRIPT_LOCATION=~/utils
 UPDATE_GLOBAL_SCRIPT=~/update.sh
 
 function main() {
@@ -19,7 +19,7 @@ function main() {
     for app in "$MANUALLY_INSTALLED_LOCATION"/*; do
       echo "Checking $app..."
       app_name=$(basename "$app")
-      find $UPDATE_SCRIPT_BASE_LOCATION \
+      find $UPDATE_SCRIPT_LOCATION \
         -iname "update_$app_name*" \
         -type f \
         -executable \

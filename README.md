@@ -8,13 +8,14 @@ For plugins and themes, [Oh My Zsh](https://ohmyz.sh/) is used.
 
 - `bin` is mapped to `$HOME/.local/bin`
 - `completion` is mapped to `$ZSH/custom/completions`
-- `home` is mapped to `$HOME`
+- `utils` is mapped to `$HOME/utils`
+- `.zshrc` and `.zprofile` are mapped to `$HOME`
 
 [stow](https://www.gnu.org/software/stow/) is used for creating the symbolic links.
 
 ## Usage
 
-_zsh scripts_ stored in the `home` folder must be executable via `util` command. Example:
+_zsh scripts_ stored in the `utils` folder must be executable via `util` command. Example:
 
 ```bash
 util file # Will source `home/utils/file.zsh` if exists

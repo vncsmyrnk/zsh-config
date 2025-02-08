@@ -21,6 +21,7 @@ export NVM_DIR="$HOME/.nvm"
 export UTILS_BKP_PATHS="$HOME/.zshrc.private $HOME/.env"
 export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues"
 export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
+export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and aliases stored in another projects
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
