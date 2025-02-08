@@ -25,10 +25,14 @@ install-omz:
 install-omz-plugins:
   #!/bin/bash
   PLUGINS_FOLDER=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins
-  PLUGINS=(zsh-syntax-highlighting zsh-autosuggestions)
+  PLUGINS=(zsh-users/zsh-syntax-highlighting zsh-users/zsh-autosuggestions)
   for plugin in "${PLUGINS[@]}"; do
-    [ ! -d $PLUGINS_FOLDER/$plugin ] && \
-      echo "git clone https://github.com/zsh-users/$plugin.git $PLUGINS_FOLDER/$plugin"
+    plugin_name=$(echo $plugin | cut -d "/" -f2)
+    [ -d $PLUGINS_FOLDER/$plugin_name ] && {
+      echo "$plugin_name already installed."
+      continue
+    }
+    git clone https://github.com/$plugin.git $PLUGINS_FOLDER/$plugin_name
   done
 
 install: install-deps install-omz install-omz-plugins config
