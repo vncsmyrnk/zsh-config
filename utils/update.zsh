@@ -20,8 +20,9 @@ function main() {
       echo "Checking $app..."
       app_name=$(basename "$app")
       find $UPDATE_SCRIPT_LOCATION \
-        -iname "update_$app_name*" \
+        -iname "${app_name}_update*" \
         -type f \
+        -follow \
         -executable \
         -exec {} \;
     done
