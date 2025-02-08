@@ -33,19 +33,21 @@ export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and alia
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)                              # Sets path varibles to lua 5.1
 
 # Aliases
-alias apt:upgrade="sudo apt-get update && sudo apt-get upgrade -y"
-alias brew:upgrade="brew update && brew upgrade"
 alias lazy:upgrade="nvim --headless \"+Lazy! sync\" +qa"
 alias lsof:ports="sudo lsof -i -P -n | grep LISTEN"
 alias docker:stop-running="docker stop \$(docker ps -a -q)"
 alias docker:image-remove-all="docker image ls | awk 'NR!=1 { print \$3 }' | xargs -I {} docker image rm -f {}"
 alias docker:prune="docker system prune"
-alias git:undo-local-commit="git reset HEAD~"
-alias git:submod-update="git submodule update --recursive --remote"
 alias cop:explain="gh copilot explain"
 alias cop:suggest="gh copilot suggest"
 alias k="kubectl"
 alias lg="lazygit"
+
+# Sources custom runtime configuraion setups
+# available at utils dir
+for setup_file in $(find $UTILS_SCRIPTS_DIR -iname "*-rc"); do
+  \. $setup_file
+done
 
 # Binds
 bindkey '^[[1;5D' backward-word

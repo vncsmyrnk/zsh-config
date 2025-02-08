@@ -5,10 +5,23 @@
 compdef _util util
 
 _util() {
-  if [ ! -d $HOME/utils ]; then
+  if [ ! -d "$UTILS_SCRIPTS_DIR" ]; then
     return
   fi
 
-  local files=($(ls $HOME/utils | cut -f1 -d "."))
-  for f in $files; do compadd $f; done
+  local state
+
+  _arguments \
+    '1: :->first' \
+    '*::arg:->args'
+
+  case $state in
+  first)
+    local files=($(ls "$UTILS_SCRIPTS_DIR" -I "*-rc" | rev | cut -f2- -d "." | rev))
+    for f in $files; do compadd $f; done
+    ;;
+  args)
+    _files
+    ;;
+  esac
 }
