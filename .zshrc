@@ -13,6 +13,12 @@ ZSH_THEME="bira"
 # Too many plugins slow down shell startup.
 plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
+# The fpath environment variable in Zsh specifies a list
+# of directories that the shell searches for function definitions.
+[ ! -z $HOMEBREW_PREFIX ] && {
+  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
+}
+
 \. $ZSH/oh-my-zsh.sh
 \. $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
 
