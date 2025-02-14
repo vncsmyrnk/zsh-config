@@ -2,7 +2,7 @@
 
 # Updates installed apps
 
-MANUALLY_INSTALLED_LOCATION=~/.local/stow
+MANUALLY_INSTALLED_LOCATION=/usr/local/stow
 UPDATE_SCRIPT_LOCATION=~/utils
 UPDATE_GLOBAL_SCRIPT=~/update.sh
 
