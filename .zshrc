@@ -15,9 +15,8 @@ plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 # The fpath environment variable in Zsh specifies a list
 # of directories that the shell searches for function definitions.
-[ ! -z $HOMEBREW_PREFIX ] && {
-  fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
-}
+[ ! -z $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
+[ -d "$HOME/.config/util/completions" ] && fpath=($HOME/.config/util/completions $fpath)
 
 \. $ZSH/oh-my-zsh.sh
 \. $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
@@ -26,10 +25,9 @@ plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
-export UTILS_BKP_PATHS="$HOME/.zshrc.private $HOME/.env $HOME/Documents"
 export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues"
 export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
-export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and aliases stored in another projects
+export UTILS_RC_PATH="$HOME/.utils/rc"
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && zsh-defer \. "$HOME/.gvm/scripts/gvm"
@@ -40,6 +38,7 @@ export UTILS_SCRIPTS_DIR="$HOME/utils" # This dir stores useful scripts and alia
   zsh-defer \. "$HOME/google-cloud-sdk/completion.zsh.inc"
 [ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] &&
   zsh-defer eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+[ -f "$HOME/.config/util/setup" ] && \. "$HOME/.config/util/setup"
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 #  INFO: https://github.com/moovweb/gvm/issues/479
@@ -58,19 +57,18 @@ alias lg="lazygit"
 
 # Sources custom runtime configuraion setups
 # available at utils dir
-for setup_file in $(find $UTILS_SCRIPTS_DIR -iname "*-rc"); do
-  \. $setup_file
-done
+[ -d "$UTILS_RC_PATH" ] && {
+  for setup_file in $(find $UTILS_RC_PATH); do
+    \. $setup_file
+  done
+}
 
 # Binds
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 
-# Custom completions. It must be run just at shell initialization
-if [[ $AUTOLOADED_COMPLETIONS -ne 1 ]]; then
-  autoload -U _util && _util
-  AUTOLOADED_COMPLETIONS=1
-fi
+# Enables custom completions
+compinit
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
