@@ -54,6 +54,7 @@ alias cop:explain="gh copilot explain"
 alias cop:suggest="gh copilot suggest"
 alias k="kubectl"
 alias lg="lazygit"
+alias u="util"
 
 # Sources custom runtime configuraion setups
 # available at utils dir
