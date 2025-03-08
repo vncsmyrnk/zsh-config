@@ -1,8 +1,8 @@
 # INFO: https://github.com/ohmyzsh/ohmyzsh/wiki
 # zmodload zsh/zprof # uncomment for profiling debug
 
-# Path to Oh My Zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+# Defines environment variables and PATH
+[ -f ~/.zprofile ] && \. ~/.zprofile
 
 # INFO: https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="bira"
@@ -20,14 +20,6 @@ plugins=(git z fzf zsh-syntax-highlighting zsh-autosuggestions)
 
 \. $ZSH/oh-my-zsh.sh
 \. $ZSH_CUSTOM/plugins/zsh-defer/zsh-defer.plugin.zsh
-
-# User configuration
-export EDITOR='nvim'
-export LANG=en_US.UTF-8
-export NVM_DIR="$HOME/.nvm"
-export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues"
-export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
-export UTILS_RC_PATH="$HOME/.utils/rc"
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && zsh-defer \. "$HOME/.gvm/scripts/gvm"
@@ -73,6 +65,5 @@ compinit
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
-[ -f ~/.zprofile ] && \. ~/.zprofile
 [ -f ~/.env ] && \. ~/.env
 # zprof # uncomment for profiling debug
