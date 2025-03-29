@@ -32,15 +32,8 @@ command -v kubectl >/dev/null && \. <(kubectl completion zsh)
 [ -f "$HOME/.config/util/setup" ] && \. "$HOME/.config/util/setup"
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
-# Aliases
-alias l:ports="sudo lsof -i -P -n | grep LISTEN"
-alias d:stop-running="docker stop \$(docker ps -a -q)"
-alias d:image-remove-all="docker image ls | awk 'NR!=1 { print \$3 }' | xargs -I {} docker image rm -f {}"
-alias d:prune="docker system prune"
-alias k="kubectl"
-alias lg="lazygit"
-alias ls="ls --color=auto"
-alias u="util"
+# Sources aliases
+[ -f ~/.zsh_aliases ] && \. ~/.zsh_aliases
 
 # Sources custom runtime configuraion setups
 # available at utils dir
