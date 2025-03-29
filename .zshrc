@@ -55,6 +55,7 @@ alias u="util"
 # Binds
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+bindkey -s '^Z' 'exec zsh\n'
 
 # Enables completions
 autoload -Uz compinit
