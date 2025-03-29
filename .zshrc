@@ -19,6 +19,9 @@ fi
 [ ! -z $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
 [ -d "$HOME/.config/util/completions" ] && fpath=($HOME/.config/util/completions $fpath)
 
+# Completions
+command -v kubectl >/dev/null && \. <(kubectl completion zsh)
+
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
 [ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"
