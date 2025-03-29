@@ -14,7 +14,6 @@ add_to_path "/opt/openresty/bin"
 command -v go >/dev/null && add_to_path "$(go env GOPATH)/bin"
 
 # Environment variables
-export ZSH="$HOME/.oh-my-zsh"
 export EDITOR='nvim'
 export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
