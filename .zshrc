@@ -35,7 +35,7 @@ command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 # Sources custom runtime configuraion setups
 # available at utils dir
 [ -d "$UTILS_RC_PATH" ] && {
-  for setup_file in $(find $UTILS_RC_PATH); do
+  for setup_file in $(find $UTILS_RC_PATH -follow -type f); do
     \. $setup_file
   done
 }
