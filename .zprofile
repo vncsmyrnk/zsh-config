@@ -19,4 +19,5 @@ export LANG=en_US.UTF-8
 export NVM_DIR="$HOME/.nvm"
 export UTILS_CUSTOM_DOCS_DIR="$HOME/Documents $HOME/issues $HOME/misc"
 export UTILS_PROJECTS_DIR="$HOME/workspace $HOME/projects $HOME/dotfiles"
-export UTILS_RC_PATH="$HOME/.utils/rc"
+export UTILS_CUSTOM_RC_PATH="$HOME/.utils/custom"
+export UTILS_DEFAULT_RC_PATH="$HOME/.utils/defaults"

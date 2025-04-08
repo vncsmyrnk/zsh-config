@@ -1,15 +1,20 @@
-# powerlevel10k config. Must be the first config to be executed
-# in order to make the instant prompt available
-[ -f ~/.p10k ] && \. ~/.p10k
-[ -f ~/.p10k.zsh ] && \. ~/.p10k.zsh
-
-[ -f ~/.zprofile ] && \. ~/.zprofile
+function source_dir() {
+  [ -d "$1" ] || return
+  for setup_file in $(find "$1" -follow -type f); do
+    \. $setup_file
+  done
+}
 
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
+# powerlevel10k config. Must be the first config to be executed
+# in order to make the instant prompt available
+\. $UTILS_DEFAULT_RC_PATH/p10k/setup
+\. $UTILS_DEFAULT_RC_PATH/p10k/.p10k.zsh
+
 # Sources zinit config
-[ -f ~/.zinit ] && \. ~/.zinit
+source_dir $UTILS_DEFAULT_RC_PATH/zinit
 
 # The fpath environment variable in Zsh specifies a list
 # of directories that the shell searches for function definitions.
@@ -34,11 +39,7 @@ command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 # Sources custom runtime configuraion setups
 # available at utils dir
-[ -d "$UTILS_RC_PATH" ] && {
-  for setup_file in $(find $UTILS_RC_PATH -follow -type f); do
-    \. $setup_file
-  done
-}
+source_dir $UTILS_CUSTOM_RC_PATH
 
 # Binds
 bindkey '^[[1;5D' backward-word
