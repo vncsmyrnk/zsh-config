@@ -1,7 +1,8 @@
 function source_dir() {
   [ -d "$1" ] || return
-  for setup_file in $(find "$1" -follow -type f); do
-    \. $setup_file
+  [ -f "$1/setup" ] && \. "$1/setup"
+  for rc_file in $(find "$1" -follow -type f -not -iname "setup"); do
+    \. $rc_file
   done
 }
 
@@ -10,8 +11,7 @@ function source_dir() {
 
 # powerlevel10k config. Must be the first config to be executed
 # in order to make the instant prompt available
-\. $UTILS_DEFAULT_RC_PATH/p10k/setup
-\. $UTILS_DEFAULT_RC_PATH/p10k/.p10k.zsh
+source_dir $UTILS_DEFAULT_RC_PATH/p10k
 
 # Sources zinit config
 source_dir $UTILS_DEFAULT_RC_PATH/zinit
@@ -19,7 +19,7 @@ source_dir $UTILS_DEFAULT_RC_PATH/zinit
 # The fpath environment variable in Zsh specifies a list
 # of directories that the shell searches for function definitions.
 [ ! -z $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
-[ -d "$HOME/.config/util/completions" ] && fpath=($HOME/.config/util/completions $fpath)
+[ -d "$SU_COMPLETIONS_PATH" ] && fpath=($HOME/.config/util/completions $fpath)
 
 # Completions
 command -v kubectl >/dev/null && \. <(kubectl completion zsh)
