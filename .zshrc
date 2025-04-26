@@ -30,8 +30,8 @@ command -v kubectl >/dev/null && \. <(kubectl completion zsh)
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"
 [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc"
-[ -x "/home/linuxbrew/.linuxbrew/bin/brew" ] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 [ -f "$HOME/.config/util/setup" ] && \. "$HOME/.config/util/setup"
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && \. <(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 # Sources aliases
