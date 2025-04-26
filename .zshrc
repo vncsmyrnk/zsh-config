@@ -16,10 +16,10 @@ source_dir $UTILS_DEFAULT_RC_PATH/p10k
 # Sources zinit config
 source_dir $UTILS_DEFAULT_RC_PATH/zinit
 
-# The fpath environment variable in Zsh specifies a list
+# The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
 [ ! -z $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
-[ -d "$SU_COMPLETIONS_PATH" ] && fpath=($HOME/.config/util/completions $fpath)
+[ -d "$SU_COMPLETIONS_PATH" ] && fpath=("$SU_COMPLETIONS_PATH" $fpath)
 
 # Completions
 command -v kubectl >/dev/null && \. <(kubectl completion zsh)
