@@ -29,12 +29,10 @@ config:
   mkdir -p {{on_update_scripts_path}} {{scripts_path}}/copilot {{config_path}}
   stow -t {{home_dir()}} . --ignore=scripts --ignore='^config'
   stow -t {{on_update_scripts_path}} -d scripts on-update
-  stow -t {{scripts_path}}/copilot -d scripts copilot
   stow -t {{config_path}} config --no-folding
   @echo -e "Run \033[1mexec zsh\033[0m to apply zsh config"
 
 unset-config:
   stow -D -t {{home_dir()}} . --ignore=scripts --ignore='^config'
   stow -D -t {{on_update_scripts_path}} -d scripts on-update
-  stow -D -t {{scripts_path}}/copilot -d scripts copilot
   stow -D -t {{config_path}} config --no-folding
