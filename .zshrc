@@ -1,20 +1,14 @@
-function source_dir() {
-  [ -d "$1" ] || return
-  [ -f "$1/setup" ] && \. "$1/setup"
-  for rc_file in $(find "$1" -follow -type f -not -iname "setup"); do
-    \. $rc_file
-  done
-}
+# INFO: https://github.com/ohmyzsh/ohmyzsh/wiki
+# zmodload zsh/zprof # uncomment for profiling debug
 
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
-# powerlevel10k config. Must be the first config to be executed
-# in order to make the instant prompt available
-source_dir $UTILS_DEFAULT_RC_PATH/p10k
-
-# Sources zinit config
-source_dir $UTILS_DEFAULT_RC_PATH/zinit
+# shell-utils sources run commands defined at ~/.config/utils/setup
+# that includes configs at this project's config folder and more
+# defined elsewhere
+export SU_RC_SOURCE_PRIORITY_ORDER="p10k zinit"
+[ -f "$HOME/.config/util/zsh" ] && \. "$HOME/.config/util/zsh"
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
@@ -30,16 +24,11 @@ command -v kubectl >/dev/null && \. <(kubectl completion zsh)
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"
 [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc"
-[ -f "$HOME/.config/util/setup" ] && \. "$HOME/.config/util/setup"
 [ -x /home/linuxbrew/.linuxbrew/bin/brew ] && \. <(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 # Sources aliases
 [ -f ~/.zsh_aliases ] && \. ~/.zsh_aliases
-
-# Sources custom runtime configuraion setups
-# available at utils dir
-source_dir $UTILS_CUSTOM_RC_PATH
 
 # Binds
 bindkey '^[[1;5D' backward-word
