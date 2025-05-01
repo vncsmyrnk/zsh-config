@@ -1,4 +1,3 @@
-# INFO: https://github.com/ohmyzsh/ohmyzsh/wiki
 # zmodload zsh/zprof # uncomment for profiling debug
 
 # Defines environment variables and PATH
@@ -8,11 +7,12 @@
 # that includes configs at this project's config folder and more
 # defined elsewhere
 export SU_RC_SOURCE_PRIORITY_ORDER="p10k zinit"
-[ -f "$HOME/.config/util/zsh" ] && \. "$HOME/.config/util/zsh"
+[ -f "$HOME/.config/util/zsh" ] || return 1
+\. "$HOME/.config/util/zsh"
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
-[ ! -z $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
+[ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
 [ -d "$SU_COMPLETIONS_PATH" ] && fpath=("$SU_COMPLETIONS_PATH" $fpath)
 
 # Completions
