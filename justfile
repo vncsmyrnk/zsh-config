@@ -23,6 +23,10 @@ install-zinit:
     rm ~/.zshrc
   fi
 
+load-time:
+  #!/bin/bash
+  time zsh -i -c exit
+
 install: install-deps install-zinit config
 
 config:

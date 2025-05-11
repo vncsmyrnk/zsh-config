@@ -19,12 +19,18 @@ export SU_RC_SOURCE_PRIORITY_ORDER="p10k zinit"
 command -v kubectl >/dev/null && \. <(kubectl completion zsh)
 
 # Apps specs
-[ -s "$HOME/.gvm/scripts/gvm" ] && \. "$HOME/.gvm/scripts/gvm"
-[ -s "$HOME/.nvm/nvm.sh" ] && \. "$HOME/.nvm/nvm.sh"
+[ -s "$HOME/.gvm/scripts/gvm" ] && {
+  zsh-defer \. "$HOME/.gvm/scripts/gvm"
+  zsh-defer unset -f cd
+}
+[ -s "$HOME/.nvm/nvm.sh" ] && zsh-defer \. "$HOME/.nvm/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] && \. "$HOME/google-cloud-sdk/path.zsh.inc"
-[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] && \. "$HOME/google-cloud-sdk/completion.zsh.inc"
-[ -x /home/linuxbrew/.linuxbrew/bin/brew ] && \. <(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+[ -f "$HOME/google-cloud-sdk/path.zsh.inc" ] &&
+  \. "$HOME/google-cloud-sdk/path.zsh.inc"
+[ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ] &&
+  \. "$HOME/google-cloud-sdk/completion.zsh.inc"
+[ -x /home/linuxbrew/.linuxbrew/bin/brew ] &&
+  \. <(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 command -v luarocks >/dev/null && eval $(luarocks path --lua-version=5.1)
 
 # Sources aliases
@@ -37,7 +43,8 @@ bindkey -s '^Z' 'exec zsh\n'
 
 # Enables completions
 autoload -Uz compinit
-compinit
+ZSH_COMPDUMP="${ZSH}/.zcompdump"
+compinit -C -d "$ZSH_COMPDUMP"
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
