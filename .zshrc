@@ -12,7 +12,9 @@ export SU_RC_SOURCE_PRIORITY_ORDER="p10k zinit"
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
-[ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath) # Adds brew zsh completions to fpath
+[ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
+[ -d $HOME/.nix-profile/share/zsh/site-functions ] &&
+  fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
 [ -d "$SU_COMPLETIONS_PATH" ] && fpath=("$SU_COMPLETIONS_PATH" $fpath)
 
 # Completions
