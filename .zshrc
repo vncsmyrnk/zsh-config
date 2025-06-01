@@ -46,7 +46,12 @@ bindkey -s '^Z' 'exec zsh\n'
 # Enables completions
 autoload -Uz compinit
 ZSH_COMPDUMP="${ZSH}/.zcompdump"
-compinit -C -d "$ZSH_COMPDUMP"
+_compinit_lazy() {
+  compinit -C -d "$ZSH_COMPDUMP"
+  unfunction _compinit_lazy
+}
+zle -N complete-word _compinit_lazy
+zle -N expand-or-complete _compinit_lazy
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
