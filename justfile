@@ -7,13 +7,17 @@ on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scrip
 default:
   just --list
 
-install-deps:
+check-deps:
   #!/bin/bash
-  if [ "{{os}}" = "Debian GNU/Linux" ] || [ "{{os}}" = "Ubuntu" ]; then
-    sudo apt-get install zsh stow git fzf fd-find tree
-  elif [ "{{os}}" = "Arch Linux" ]; then
-    sudo pacman -S zsh stow git fzf fd tree
+  dependencies=(zsh stow git tree)
+  missing_dependencies=($(for dep in "${dependencies[@]}"; do command -v "$dep" &> /dev/null || echo "$dep"; done))
+
+  if [ ${#missing_dependencies[@]} -gt 0 ]; then
+    echo "Dependencies not found: ${missing_dependencies[*]}"
+    echo "Please install them with the appropriate package manager"
+    exit 1
   fi
+
   [ ! $SHELL = "/usr/bin/zsh" ] && chsh -s $(which zsh)
 
 install-zinit:
@@ -27,7 +31,7 @@ load-time:
   #!/bin/bash
   time zsh -i -c exit
 
-install: install-deps install-zinit config
+install: check-deps install-zinit config
 
 config:
   mkdir -p {{on_update_scripts_path}} {{rc_path}}
