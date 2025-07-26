@@ -43,15 +43,8 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey -s '^Z' 'exec zsh\n'
 
-# Enables completions
 autoload -Uz compinit
-ZSH_COMPDUMP="${ZSH}/.zcompdump"
-_compinit_lazy() {
-  compinit -C -d "$ZSH_COMPDUMP"
-  unfunction _compinit_lazy
-}
-zle -N complete-word _compinit_lazy
-zle -N expand-or-complete _compinit_lazy
+zsh-defer compinit
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
