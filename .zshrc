@@ -1,10 +1,7 @@
 # zmodload zsh/zprof # uncomment for profiling debug
 
-# Puts zsh dump file for completions on tmp directory
-# So it is regenerated at first zsh execution
-# Completions compilation takes time and it is safe
-# to do it once as completions are rarely added
-ZSH_COMPDUMP="/tmp/.zshcompdump"
+# zsh compinit cache
+ZSH_COMPDUMP="$HOME/.zshcompdump"
 
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
@@ -12,7 +9,6 @@ ZSH_COMPDUMP="/tmp/.zshcompdump"
 # shell-utils sources run commands defined at ~/.config/utils/setup
 # that includes configs at this project's config folder and more
 # defined elsewhere
-export SU_RC_SOURCE_PRIORITY_ORDER="p10k zinit"
 [ -f "$HOME/.config/util/zsh" ] || return 1
 \. "$HOME/.config/util/zsh"
 
@@ -50,12 +46,12 @@ bindkey '^[[1;5C' forward-word
 bindkey -s '^Z' 'exec zsh\n'
 
 autoload -Uz compinit
-[ -f "$ZSH_COMPDUMP" ] && {
-  compinit -C -d "$ZSH_COMPDUMP"
-} || {
-  # This recompiles the completions
-  compinit -d "$ZSH_COMPDUMP"
-}
+compinit -C -d "$ZSH_COMPDUMP"
+
+{ # updates completions file in a non-blocking way
+  setopt NO_NOTIFY NO_MONITOR
+  (compinit -d "$ZSH_COMPDUMP") &
+} >/dev/null
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
