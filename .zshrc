@@ -1,5 +1,11 @@
 # zmodload zsh/zprof # uncomment for profiling debug
 
+# Puts zsh dump file for completions on tmp directory
+# So it is regenerated at first zsh execution
+# Completions compilation takes time and it is safe
+# to do it once as completions are rarely added
+ZSH_COMPDUMP="/tmp/.zshcompdump"
+
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
@@ -44,7 +50,12 @@ bindkey '^[[1;5C' forward-word
 bindkey -s '^Z' 'exec zsh\n'
 
 autoload -Uz compinit
-zsh-defer compinit
+[ -f "$ZSH_COMPDUMP" ] && {
+  compinit -C -d "$ZSH_COMPDUMP"
+} || {
+  # This recompiles the completions
+  compinit -d "$ZSH_COMPDUMP"
+}
 
 # Source extra files
 [ -f ~/.zshrc.private ] && \. ~/.zshrc.private
