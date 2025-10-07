@@ -4,6 +4,12 @@ add_to_path() {
   fi
 }
 
+add_to_lua_path() {
+  if [[ ":$LUA_PATH:" != *":$1:"* ]]; then
+    LUA_PATH="$LUA_PATH:$1"
+  fi
+}
+
 add_to_path "$HOME/.local/bin"
 add_to_path "$HOME/google-cloud-sdk/bin"
 add_to_path "$HOME/.config/composer/vendor/bin"        # Makes composer/PHP installed plugins available
@@ -13,6 +19,9 @@ add_to_path "$HOME/.luarocks/bin"                      # Makes lua installed pac
 add_to_path "/usr/local/texlive/2025/bin/x86_64-linux" # TeX Live
 add_to_path "/opt/openresty/bin"
 command -v go >/dev/null && add_to_path "$(go env GOPATH)/bin"
+
+add_to_lua_path "$HOME/lua/?.lua"
+add_to_lua_path "$HOME/httpreqs/?.lua"
 
 # Environment variables
 export EDITOR='nvim'
