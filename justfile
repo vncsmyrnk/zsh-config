@@ -7,7 +7,7 @@ default:
 
 check-deps:
   #!/bin/bash
-  dependencies=(zsh stow git tree)
+  dependencies=(zsh stow git tree fzf)
   missing_dependencies=($(for dep in "${dependencies[@]}"; do command -v "$dep" &> /dev/null || echo "$dep"; done))
 
   if [ ${#missing_dependencies[@]} -gt 0 ]; then
