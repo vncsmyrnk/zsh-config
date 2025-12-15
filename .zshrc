@@ -19,9 +19,6 @@ ZSH_COMPDUMP="$HOME/.zshcompdump"
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
 [ -d "$SU_COMPLETIONS_PATH" ] && fpath=("$SU_COMPLETIONS_PATH" $fpath)
 
-# Completions
-command -v kubectl >/dev/null && \. <(kubectl completion zsh)
-
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && {
   zsh-defer \. "$HOME/.gvm/scripts/gvm"
