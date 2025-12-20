@@ -19,17 +19,21 @@ check-deps:
   [ ! $SHELL = "/usr/bin/zsh" ] && chsh -s $(which zsh)
 
 install-zinit:
-  #!/bin/bash
+  #!/usr/bin/env bash
   if [ -z "$ZSH" ]; then
     bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"
     rm ~/.zshrc
   fi
 
+install-omp:
+  #!/usr/bin/env bash
+  curl -s https://ohmyposh.dev/install.sh | bash -s
+
 load-time:
   #!/bin/bash
   time zsh -i -c exit
 
-install: check-deps install-zinit config
+install: check-deps install-zinit install-omp config
 
 config:
   mkdir -p {{on_update_scripts_path}} {{rc_path}}
