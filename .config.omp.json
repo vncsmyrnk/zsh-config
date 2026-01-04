@@ -25,12 +25,12 @@
           "type": "path"
         },
         {
-          "foreground": "#ff94df",
+          "foreground": "#75B06F",
           "foreground_templates": [
-            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFEB3B{{ end }}",
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FFCF50{{ end }}",
             "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFCC80{{ end }}",
             "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-            "{{ if gt .Behind 0 }}#B388FB{{ end }}"
+            "{{ if gt .Behind 0 }}#E9D484{{ end }}"
           ],
           "options": {
             "fetch_status": true,
