@@ -102,6 +102,9 @@
         {
           "foreground": "lightGreen",
           "style": "plain",
+          "foreground_templates": [
+            "{{ if .Segments.Status.Error }}#e91e63{{ end }}"
+          ],
           "template": "❯",
           "type": "text"
         }
