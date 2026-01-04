@@ -60,41 +60,25 @@
       "segments": [
         {
           "type": "status",
-          "style": "diamond",
+          "style": "plain",
           "foreground": "#ffffff",
-          "background": "#628141",
-          "background_templates": [
-            "{{ if .Error }}#e91e63{{ end }}"
-          ],
-          "leading_diamond": "",
-          "trailing_diamond": " ",
-          "template": "{{ if .Error }}✗{{ else }}✓{{ end }} {{ .String }}",
-          "options": {
-            "always_enabled": true
-          }
+          "template": "{{ if .Error }}({{ .String }}){{ else }}{{ end }}"
         },
         {
           "type": "executiontime",
-          "style": "diamond",
-          "leading_diamond": "",
-          "trailing_diamond": " ",
+          "style": "plain",
           "foreground": "#ffffff",
-          "background": "#1C4D8D",
-          "template": " <#fefefe></> {{ .FormattedMs }} ",
+          "template": " {{ .FormattedMs }}",
           "options": {
             "threshold": 500,
-            "style": "austin",
-            "always_enabled": true
+            "style": "austin"
           }
         },
         {
           "type": "time",
-          "style": "diamond",
+          "style": "plain",
           "foreground": "#ffffff",
-          "background": "#213448",
-          "leading_diamond": "",
-          "trailing_diamond": " ",
-          "template": "⏰ {{ .CurrentDate | date .Format }}",
+          "template": " {{ .CurrentDate | date .Format }}",
           "options": {
             "time_format": "15:04:05"
           }
