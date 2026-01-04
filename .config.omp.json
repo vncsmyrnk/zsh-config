@@ -49,7 +49,7 @@
         {
           "type": "kubectl",
           "style": "plain",
-          "foreground": "#ebcc34",
+          "foreground": "#FFCDC9",
           "template": " 󱃾 {{.Context}}{{if .Namespace}} :: {{.Namespace}}{{end}} "
         }
       ],
