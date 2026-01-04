@@ -17,7 +17,7 @@ ZSH_COMPDUMP="$HOME/.zshcompdump"
 [ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 [ -d $HOME/.nix-profile/share/zsh/site-functions ] &&
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
-[ -d "$SU_COMPLETIONS_PATH" ] && fpath=("$SU_COMPLETIONS_PATH" $fpath)
+[ -d "$SU_COMPLETIONS_PATH/zsh" ] && fpath=("$SU_COMPLETIONS_PATH/zsh" $fpath)
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && {
