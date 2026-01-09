@@ -16,6 +16,12 @@
           "type": "session"
         },
         {
+          "type": "nix-shell",
+          "style": "plain",
+          "foreground": "blue",
+          "template": "{{ if ne .Type \"unknown\" }}(󱄅-{{ .Type }}){{ end }} "
+        },
+        {
           "foreground": "#4988C4",
           "options": {
             "style": "folder"
