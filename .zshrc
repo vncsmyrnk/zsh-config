@@ -9,8 +9,11 @@ ZSH_COMPDUMP="$HOME/.zshcompdump"
 # shell-utils sources run commands defined at ~/.config/utils/setup
 # that includes configs at this project's config folder and more
 # defined elsewhere
-[ -f "$HOME/.config/util/source_setup_dirs" ] || return 1
-\. "$HOME/.config/util/source_setup_dirs"
+[ ! -f /tmp/source_setup_dirs ] && {
+  command -v util &>/dev/null || return 1
+  util config source_setup_dirs --to-stdout >/tmp/source_setup_dirs
+}
+\. /tmp/source_setup_dirs
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
