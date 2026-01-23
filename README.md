@@ -2,7 +2,7 @@
 
 This is my local config for using the [zsh](https://www.zsh.org/) shell.
 
-Plugins are handled by [zinit](https://github.com/zdharma-continuum/zinit). Prompt by [powerlevel10k](https://github.com/romkatv/powerlevel10k).
+Plugins are handled by [zinit](https://github.com/zdharma-continuum/zinit). Prompt by [Oh My Posh](https://ohmyposh.dev/).
 
 ## Install
 
