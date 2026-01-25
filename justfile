@@ -33,6 +33,10 @@ load-time:
   #!/bin/bash
   time zsh -i -c exit
 
+reinstall-plugins:
+  rm -rf "$HOME/.local/share/zinit/plugins"
+  exec zsh
+
 install: check-deps install-zinit install-omp config
 
 config:
