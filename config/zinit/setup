@@ -26,13 +26,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice depth"1" wait lucid
 zinit light zsh-users/zsh-syntax-highlighting
 
-{
-  zinit ice depth=1
-  zinit light jeffreytse/zsh-vi-mode
-
-  ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-}
-
 zinit snippet OMZL::completion.zsh
 zinit snippet OMZL::history.zsh
 zinit snippet OMZL::key-bindings.zsh
