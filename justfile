@@ -1,7 +1,3 @@
-# scripts_path := "${SU_SCRIPTS_PATH:-$HOME/.config/util/scripts}"
-# rc_path := "${SU_RC_SOURCE_PATH:-$HOME/.config/util/setup}"
-# on_update_scripts_path := "${SU_SCRIPTS_ON_UPDATE_PATH:-$HOME/.config/util/scripts/on-update}"
-
 default:
   just --list
 
@@ -40,12 +36,13 @@ reinstall-plugins:
 install: check-deps install-zinit install-omp config
 
 config:
+  @mkdir -p "$HOME/.config/zsh-config"
+  stow -t "$HOME/.config/zsh-config" config
   stow -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
   util config add scripts -p scripts/on-update
-  util config add config -p setup
   @echo -e "Run \033[1mexec zsh\033[0m to apply zsh config"
 
 unset-config:
   stow -D -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
+  stow -D -t "$HOME/.config/zsh-config" config
   util config remove scripts/on-update --original-source scripts --force
-  util config remove setup --original-source config --force

@@ -6,18 +6,14 @@ ZSH_COMPDUMP="$HOME/.zshcompdump"
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
-# shell-utils sources run commands defined at ~/.config/utils/setup
-# that includes configs at this project's config folder and more
-# defined elsewhere
-\. "$HOME/.config/util/scripts/config/default-vars.sh"
-\. "$SU_SCRIPTS_PATH/config/source-setup-dirs.sh"
+\. "$HOME/.config/zsh-config/zinit/setup"
+\. "$HOME/.config/zsh-config/omp/setup"
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
 [ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 [ -d $HOME/.nix-profile/share/zsh/site-functions ] &&
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
-[ -d "$SU_COMPLETIONS_PATH/zsh" ] && fpath=("$SU_COMPLETIONS_PATH/zsh" $fpath)
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && {
