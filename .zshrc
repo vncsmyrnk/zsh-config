@@ -15,6 +15,13 @@ ZSH_COMPDUMP="$HOME/.zshcompdump"
 [ -d $HOME/.nix-profile/share/zsh/site-functions ] &&
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
 
+# Sources all external setups
+[ -d "$HOME/.config/shell-setup" ] &&
+  find "$HOME/.config/shell-setup" -follow -type f |
+  while read -r setup; do
+    \. "$setup"
+  done
+
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && {
   zsh-defer \. "$HOME/.gvm/scripts/gvm"
