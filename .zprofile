@@ -5,8 +5,8 @@ add_to_path() {
 }
 
 add_to_lua_path() {
-  if [[ ":$LUA_PATH:" != *":$1:"* ]]; then
-    LUA_PATH="$LUA_PATH:$1"
+  if [[ ";$LUA_PATH;" != *";$1;"* ]]; then
+    LUA_PATH="$LUA_PATH;$1"
   fi
 }
 
