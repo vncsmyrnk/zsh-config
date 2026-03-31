@@ -39,10 +39,10 @@ config:
   @mkdir -p "$HOME/.config/zsh-config"
   stow -t "$HOME/.config/zsh-config" config
   stow -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
-  util config add scripts -p scripts/on-update
+  util config add scripts -t on-update
   @echo -e "Run \033[1mexec zsh\033[0m to apply zsh config"
 
 unset-config:
   stow -D -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
   stow -D -t "$HOME/.config/zsh-config" config
-  util config remove scripts/on-update --original-source scripts --force
+  (cd scripts; find -type f | cut -b 3- | xargs -I{} util config remove on-update/{} --force)
