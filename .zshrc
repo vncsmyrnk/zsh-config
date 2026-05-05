@@ -47,6 +47,7 @@ bindkey -s '^Z' 'exec zsh\n'
 
 autoload -Uz compinit
 compinit -C -d "$ZSH_COMPDUMP"
+compdef _precommand secenv
 
 { # updates completions file in a non-blocking way
   setopt NO_NOTIFY NO_MONITOR
