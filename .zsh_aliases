@@ -9,7 +9,3 @@ alias ls="ls --color=auto"
 alias diff="diff --color=auto"
 alias u="util"
 alias m="make"
-
-secenv() {
-  sops exec-env ~/.secrets/sops/secrets.env "$*"
-}
