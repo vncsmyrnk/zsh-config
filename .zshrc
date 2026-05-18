@@ -3,6 +3,8 @@
 # zsh compinit cache
 ZSH_COMPDUMP="$HOME/.zshcompdump"
 
+HISTFILE="$HOME/.zsh_history"
+
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
