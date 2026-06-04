@@ -16,6 +16,8 @@ HISTFILE="$HOME/.zsh_history"
 [ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
 [ -d $HOME/.nix-profile/share/zsh/site-functions ] &&
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+[ -d $HOME/.local/share/zsh/site-functions ] &&
+  fpath=($HOME/.local/share/zsh/site-functions $fpath)
 
 # Sources all external setups
 [ -d "$HOME/.config/shell-setup" ] &&
