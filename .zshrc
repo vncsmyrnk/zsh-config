@@ -4,6 +4,10 @@
 ZSH_COMPDUMP="$HOME/.zshcompdump"
 
 HISTFILE="$HOME/.zsh_history"
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+unsetopt HIST_SAVE_BY_COPY
 
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
