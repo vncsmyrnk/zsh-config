@@ -15,6 +15,9 @@ unsetopt HIST_SAVE_BY_COPY
 \. "$HOME/.config/zsh-config/zinit/setup"
 \. "$HOME/.config/zsh-config/omp/setup"
 
+[ -f '/usr/local/share/underscore/entrypoints/zsh' ] &&
+  \. '/usr/local/share/underscore/entrypoints/zsh'
+
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
 [ -n $HOMEBREW_PREFIX ] && fpath=($HOMEBREW_PREFIX/share/zsh/site-functions $fpath)
