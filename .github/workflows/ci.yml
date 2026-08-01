@@ -1,0 +1,32 @@
+name: CI workflow
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: extractions/setup-just@v4
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y zsh stow
+
+      - name: Syntax check
+        run: |
+          echo "Running syntax check..."
+          find . -type f \( -name "*.zsh" -o -name ".zshrc" -o -name "_*" \) -exec zsh -n {} +
+
+      - name: Interactive Runtime Test
+        timeout-minutes: 3
+        run: |
+          export HOME="$RUNNER_TEMP/test-home"
+          mkdir -p "$HOME"
+          umask 022
+
+          just config
+          printf 'y\n' | timeout 90 script -q -e \
+            -c "zsh -o ERR_EXIT -ilc 'exit'" \
+            /dev/null
