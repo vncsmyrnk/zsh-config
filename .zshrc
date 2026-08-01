@@ -12,10 +12,56 @@ unsetopt HIST_SAVE_BY_COPY
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
-\. "$HOME/.config/zsh-config/zinit/setup"
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+  print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+  command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+  command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+    print -P "%F{33} %F{34}Installation successful.%f%b" || \
+    print -P "%F{160} The clone has failed.%f%b"
+fi
 
-[ -f '/usr/local/share/underscore/entrypoints/zsh' ] &&
-  \. '/usr/local/share/underscore/entrypoints/zsh'
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+zinit light-mode for \
+  zdharma-continuum/zinit-annex-as-monitor \
+  zdharma-continuum/zinit-annex-bin-gem-node \
+  zdharma-continuum/zinit-annex-patch-dl \
+  zdharma-continuum/zinit-annex-rust
+
+zinit ice from"gh-r" as"program" mv"posh-* -> oh-my-posh" pick"*linux*" \
+  atclone"chmod a+x oh-my-posh; ./oh-my-posh init zsh --config $HOME/.config.omp.json > init.zsh" \
+  atpull"%atclone" src"init.zsh"
+zinit light jandedobbeleer/oh-my-posh
+
+zinit ice depth"1"
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice depth"1" wait lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit snippet OMZL::completion.zsh
+zinit snippet OMZL::history.zsh
+zinit snippet OMZL::key-bindings.zsh
+
+zinit ice wait lucid
+zinit snippet OMZL::directories.zsh
+
+zinit ice wait lucid
+zinit snippet OMZP::fzf
+
+zinit ice wait lucid
+zinit snippet OMZP::common-aliases
+
+zinit ice wait lucid
+zinit snippet OMZP::git
+
+zinit ice wait lucid
+zinit snippet OMZP::kubectl
+
+zinit ice wait lucid
+zinit snippet OMZP::z
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.

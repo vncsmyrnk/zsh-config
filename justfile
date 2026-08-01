@@ -25,10 +25,7 @@ reinstall-plugins:
 install: check-deps config
 
 config:
-  @mkdir -p "$HOME/.config/zsh-config"
-  stow -t "$HOME/.config/zsh-config" config
-  stow -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
+  stow -t "{{home_dir()}}" .
 
 unset-config:
-  stow -D -t "{{home_dir()}}" . --ignore=scripts --ignore='^config'
-  stow -D -t "$HOME/.config/zsh-config" config
+  stow -D -t "{{home_dir()}}" .
