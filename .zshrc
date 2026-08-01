@@ -35,6 +35,12 @@ zinit ice from"gh-r" as"program" mv"posh-* -> oh-my-posh" pick"*linux*" \
   atpull"%atclone" src"init.zsh"
 zinit light jandedobbeleer/oh-my-posh
 
+zinit ice pick"config/aliases"
+zinit light vncsmyrnk/git-config
+
+zinit ice pick"config/aliases"
+zinit light vncsmyrnk/tmux-config
+
 zinit ice depth"1"
 zinit light zsh-users/zsh-autosuggestions
 
@@ -70,13 +76,6 @@ zinit snippet OMZP::z
   fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
 [ -d $HOME/.local/share/zsh/site-functions ] &&
   fpath=($HOME/.local/share/zsh/site-functions $fpath)
-
-# Sources all external setups
-[ -d "$HOME/.config/shell-setup" ] &&
-  find "$HOME/.config/shell-setup" -follow -type f |
-  while read -r setup; do
-    \. "$setup"
-  done
 
 # Apps specs
 [ -s "$HOME/.gvm/scripts/gvm" ] && {
