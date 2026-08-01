@@ -21,10 +21,6 @@ install-zinit:
     rm ~/.zshrc
   fi
 
-install-omp:
-  #!/usr/bin/env bash
-  curl -s https://ohmyposh.dev/install.sh | bash -s
-
 load-time:
   #!/bin/bash
   time zsh -i -c exit
@@ -33,7 +29,7 @@ reinstall-plugins:
   rm -rf "$HOME/.local/share/zinit/plugins"
   exec zsh
 
-install: check-deps install-zinit install-omp config
+install: check-deps install-zinit config
 
 config:
   @mkdir -p "$HOME/.config/zsh-config"

@@ -13,7 +13,6 @@ unsetopt HIST_SAVE_BY_COPY
 [ -f ~/.zprofile ] && \. ~/.zprofile
 
 \. "$HOME/.config/zsh-config/zinit/setup"
-\. "$HOME/.config/zsh-config/omp/setup"
 
 [ -f '/usr/local/share/underscore/entrypoints/zsh' ] &&
   \. '/usr/local/share/underscore/entrypoints/zsh'
