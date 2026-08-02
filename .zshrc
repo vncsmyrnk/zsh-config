@@ -35,6 +35,11 @@ zinit ice from"gh-r" as"program" mv"posh-* -> oh-my-posh" pick"*linux*" \
   atpull"%atclone" src"init.zsh"
 zinit light jandedobbeleer/oh-my-posh
 
+zinit ice from"gh-r" as"program" \
+  atclone"./zoxide init zsh > init.zsh" \
+  atpull"%atclone" src"init.zsh"
+zinit light ajeetdsouza/zoxide
+
 zinit ice pick"config/aliases"
 zinit light vncsmyrnk/git-config
 
@@ -65,9 +70,6 @@ zinit snippet OMZP::git
 
 zinit ice wait lucid
 zinit snippet OMZP::kubectl
-
-zinit ice wait lucid
-zinit snippet OMZP::z
 
 # The fpath environment variable in zsh specifies a list
 # of directories that the shell searches for function definitions.
