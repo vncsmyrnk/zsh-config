@@ -30,7 +30,7 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-patch-dl \
   zdharma-continuum/zinit-annex-rust
 
-zinit ice from"gh-r" as"program" mv"posh-* -> oh-my-posh" pick"*linux*" \
+zinit ice from"gh-r" as"program" mv"posh-* -> oh-my-posh" \
   atclone"chmod a+x oh-my-posh; ./oh-my-posh init zsh --config $HOME/.config.omp.json > init.zsh" \
   atpull"%atclone" src"init.zsh"
 zinit light jandedobbeleer/oh-my-posh
