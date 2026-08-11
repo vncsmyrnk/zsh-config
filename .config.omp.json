@@ -16,6 +16,12 @@
           "type": "session"
         },
         {
+          "type": "text",
+          "style": "plain",
+          "foreground": "white",
+          "template": "({{ .SHLVL }}) "
+        },
+        {
           "type": "nix-shell",
           "style": "plain",
           "foreground": "blue",
