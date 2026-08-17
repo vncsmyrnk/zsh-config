@@ -46,6 +46,9 @@ zinit light vncsmyrnk/git-config
 zinit ice pick"config/aliases"
 zinit light vncsmyrnk/tmux-config
 
+zinit ice pick"aliases"
+zinit light vncsmyrnk/utilities
+
 zinit ice depth"1"
 zinit light zsh-users/zsh-autosuggestions
 
