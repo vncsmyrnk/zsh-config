@@ -12,6 +12,7 @@ setopt AUTO_CD
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 setopt PUSHDMINUS
+setopt VI
 
 # Defines environment variables and PATH
 [ -f ~/.zprofile ] && \. ~/.zprofile
